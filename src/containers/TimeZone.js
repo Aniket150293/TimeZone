@@ -24,10 +24,12 @@ export default function TimeZone ({getCountryList,countryList,fetchTime,timeRece
     React.useEffect(() => {
       if(timeReceived) {
         setTime(timeReceived.formatted)
-        clearInterval();
-        setInterval(() => {
+        
+        const timeInterval = setInterval(() => {
           fetchTime(selecedCountry);
         }, 5000);
+
+        return () => clearInterval(timeInterval);
       }
     }, [timeReceived]);
 

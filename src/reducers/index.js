@@ -4,10 +4,15 @@ const reducer = (state = {}, action) => {
       return { ...state, loading: true };
     case 'COUNTRY_LIST_RECEIVED':
       return { ...state, countryList: action.json, loading: false }
+    case 'COUNTRY_LIST_FAILED':
+        return { ...state, countryList: action.json, loading: false }
     case 'FETCH_TIME':
         return { ...state, loading: true };
     case 'FETCH_TIME_SUCCESS':
         return { ...state, time: action.json, loading: false }
+    case 'FETCH_TIME_FAILED':
+        return { ...state, time: action.json, loading: false }
+        
     default:
       return state;
   }
